@@ -1,0 +1,18 @@
+﻿version: "3.8"
+services:
+  locations-mongo:
+    image: mongo:latest
+    container_name: locations-mongo
+    ports:
+      - 34022:27017
+    networks:
+      - dg
+    volumes:
+      - locations:/data/db
+
+volumes:
+  locations:
+
+networks:
+  dg:
+    name: dg

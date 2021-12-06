@@ -1,0 +1,34 @@
+﻿namespace Com.Apdcomms.StormPipeline.Parsing.Factory
+{
+    public enum MessageCodes
+    {
+        PRI,
+        CI2,
+        DI,
+        SDA,
+        UI,
+        UR,
+        PSI,
+        CI,
+        CR,
+        DCO,
+        DDO,
+        CR2,
+        RSC,
+        RFS,
+        PII,
+        PILI,
+        DIL,
+        RILA,
+        DR,
+        RRA,        
+        RRS,
+        AL,
+        CSU,
+        CLI,
+        FWA,
+        CAI,
+        ZAI,
+        DAI
+    }
+}

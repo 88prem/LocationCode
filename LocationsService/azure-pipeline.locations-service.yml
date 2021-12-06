@@ -1,0 +1,131 @@
+variables:
+  pipelineArtifactName: locations-service
+  solutionPath: Services/LocationsService
+  imageRepository: dg/locations-service
+  dockerFilePath: /LocationsService
+  dockerComposeFilePath: /LocationsService
+  
+trigger:
+  branches:
+    include:
+      - master
+      - releases/*
+  paths:
+    include:
+      - Services/LocationsService/*
+      - Services/Libraries/*
+
+resources:
+- repo: self
+
+stages:
+- stage: build_and_test
+  displayName: Build & Test Solution
+  jobs:
+  - template: ../../pipeline-templates/solution.build.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      pipelineArtifactSourcePath: $(solutionPath)
+      solutionPath: $(solutionPath)
+      solutionFile: LocationsService.sln
+      
+- stage: push_docker_image
+  displayName: Build & Push Docker Image
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: build_and_test
+  pool:
+    name: Linux Build
+  jobs:
+  - template: ../../pipeline-templates/docker.build-push.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      repository: $(imageRepository)
+      dockerFilePath: $(dockerFilePath)
+
+- stage: deploy_dg_master
+  displayName: Deploy DG Master
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  dependsOn: push_docker_image
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Master
+      dockerComposeFilePath: $(dockerComposeFilePath)
+      
+- stage: deploy_dg_test
+  displayName: Deploy DG Test
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: push_docker_image
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Test
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_dev
+  displayName: Deploy DG Development
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: push_docker_image
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Development
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_maps
+  displayName: Deploy DG Maps (Release)
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/releases/'))
+  dependsOn: deploy_dg_test
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Maps
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_lte_dev
+  displayName: Deploy DG LTE Development
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: deploy_dg_dev
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: DG LTE Development
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_lte_master
+  displayName: Deploy DG LTE Master
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  dependsOn: deploy_dg_master
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: DG LTE Master
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_lte_test
+  displayName: Deploy DG LTE Test
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: deploy_dg_test
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: DG LTE Test
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_lte_uat
+  displayName: Deploy DG LTE UAT
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/releases/'))
+  dependsOn: deploy_dg_test
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: DG LTE UAT
+      dockerComposeFilePath: $(dockerComposeFilePath)

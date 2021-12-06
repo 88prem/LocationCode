@@ -1,0 +1,350 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\APD-Project\\Services\\LocationsService\\LocationsService.Tests\\LocationsService.Tests.csproj": {}
+  },
+  "projects": {
+    "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj",
+        "projectName": "QueueTypes.Pipeline",
+        "projectPath": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj",
+        "packagesPath": "C:\\Users\\prem.jaiswal\\.nuget\\packages\\",
+        "outputPath": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prem.jaiswal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "EasyNetQ": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\APD-Project\\Libraries\\QueueTypes.Surface\\QueueTypes.Surface\\QueueTypes.Surface.csproj": {
+      "version": "0.1.0",
+      "restore": {
+        "projectUniqueName": "E:\\APD-Project\\Libraries\\QueueTypes.Surface\\QueueTypes.Surface\\QueueTypes.Surface.csproj",
+        "projectName": "QueueTypes.Surface",
+        "projectPath": "E:\\APD-Project\\Libraries\\QueueTypes.Surface\\QueueTypes.Surface\\QueueTypes.Surface.csproj",
+        "packagesPath": "C:\\Users\\prem.jaiswal\\.nuget\\packages\\",
+        "outputPath": "E:\\APD-Project\\Libraries\\QueueTypes.Surface\\QueueTypes.Surface\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prem.jaiswal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "EasyNetQ": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\APD-Project\\Services\\LocationsService\\LocationsService.Tests\\LocationsService.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\APD-Project\\Services\\LocationsService\\LocationsService.Tests\\LocationsService.Tests.csproj",
+        "projectName": "LocationsService.Tests",
+        "projectPath": "E:\\APD-Project\\Services\\LocationsService\\LocationsService.Tests\\LocationsService.Tests.csproj",
+        "packagesPath": "C:\\Users\\prem.jaiswal\\.nuget\\packages\\",
+        "outputPath": "E:\\APD-Project\\Services\\LocationsService\\LocationsService.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prem.jaiswal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\APD-Project\\Services\\LocationsService\\LocationsService\\LocationsService.csproj": {
+                "projectPath": "E:\\APD-Project\\Services\\LocationsService\\LocationsService\\LocationsService.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[6.2.1, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.10.3, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.7.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\APD-Project\\Services\\LocationsService\\LocationsService\\LocationsService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\APD-Project\\Services\\LocationsService\\LocationsService\\LocationsService.csproj",
+        "projectName": "LocationsService",
+        "projectPath": "E:\\APD-Project\\Services\\LocationsService\\LocationsService\\LocationsService.csproj",
+        "packagesPath": "C:\\Users\\prem.jaiswal\\.nuget\\packages\\",
+        "outputPath": "E:\\APD-Project\\Services\\LocationsService\\LocationsService\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prem.jaiswal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj": {
+                "projectPath": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj"
+              },
+              "E:\\APD-Project\\Libraries\\QueueTypes.Surface\\QueueTypes.Surface\\QueueTypes.Surface.csproj": {
+                "projectPath": "E:\\APD-Project\\Libraries\\QueueTypes.Surface\\QueueTypes.Surface\\QueueTypes.Surface.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "EasyNetQ": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "EasyNetQ.DI.Microsoft": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "Hellang.Middleware.ProblemDetails": {
+              "target": "Package",
+              "version": "[5.2.3, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.0, )",
+              "noWarn": [
+                "NU1605"
+              ]
+            },
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+              "target": "Package",
+              "version": "[5.0.0, )",
+              "noWarn": [
+                "NU1605"
+              ]
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.11.6, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.6, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

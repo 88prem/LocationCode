@@ -1,0 +1,193 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\APD-Project\\Services\\StormPipeline\\StormPipeline\\StormPipeline.csproj": {}
+  },
+  "projects": {
+    "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj",
+        "projectName": "QueueTypes.Pipeline",
+        "projectPath": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj",
+        "packagesPath": "C:\\Users\\prem.jaiswal\\.nuget\\packages\\",
+        "outputPath": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prem.jaiswal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "EasyNetQ": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\APD-Project\\Services\\StormPipeline\\StormPipeline\\StormPipeline.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\APD-Project\\Services\\StormPipeline\\StormPipeline\\StormPipeline.csproj",
+        "projectName": "StormPipeline",
+        "projectPath": "E:\\APD-Project\\Services\\StormPipeline\\StormPipeline\\StormPipeline.csproj",
+        "packagesPath": "C:\\Users\\prem.jaiswal\\.nuget\\packages\\",
+        "outputPath": "E:\\APD-Project\\Services\\StormPipeline\\StormPipeline\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prem.jaiswal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj": {
+                "projectPath": "E:\\APD-Project\\Libraries\\QueueTypes.Pipeline\\QueueTypes.Pipeline\\QueueTypes.Pipeline.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "EasyNetQ": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "EasyNetQ.DI.Microsoft": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "SuperSimpleTcp": {
+              "target": "Package",
+              "version": "[2.2.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

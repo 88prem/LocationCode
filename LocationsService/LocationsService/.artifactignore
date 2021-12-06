@@ -1,0 +1,4 @@
+**/*
+!bin
+!Release.Dockerfile
+!docker-compose.yml

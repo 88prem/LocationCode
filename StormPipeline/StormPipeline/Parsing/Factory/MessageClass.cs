@@ -1,0 +1,34 @@
+﻿namespace Com.Apdcomms.StormPipeline.Parsing.Factory
+{
+    public enum MessageClass
+    {
+        ProcessResourceInformation,
+        CreateIncidentTwo,
+        DeleteIncident,
+        SetDataAttribute,
+        UpdateIncident,
+        UpdateResource,
+        ProcessStationInformation,
+        CreateIncident,
+        CreateResource,
+        CreateDynamicObject,
+        DeleteDynamicObject,
+        CreateResourceTwo,
+        ResourceShiftChange,
+        RemoveFireStation,
+        ProcessIncidentInformation,
+        ProcessIncidentLogInformation,
+        DeleteIncidentLog,
+        RequestIncidentLogAddition,
+        DeleteResource,
+        RequestResourceAssociation,        
+        RequestResourceStatus,
+        VehicleAlert,
+        ChangeStatusUpdate,
+        CloseIncident,
+        SendWatchAlert,
+        CreateAssociatedIcon,
+        DeleteAssociatedIcon,
+        ZoomAssociatedIcon
+    }
+}

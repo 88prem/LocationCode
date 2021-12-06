@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+    storm-pipeline:
+        image: registry.dev.apdcomms.co.uk:443/dg/storm-pipeline:${Tag}
+        networks:
+            - dg    
+        container_name: storm-pipeline
+        environment:
+            - DATAGATEWAY_ENVIRONMENT=Test
+networks:
+  dg:
+    name: dg

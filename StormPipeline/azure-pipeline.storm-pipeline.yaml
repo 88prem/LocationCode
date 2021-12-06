@@ -1,0 +1,127 @@
+parameters:
+  - name: stormTarget
+    type: string
+    displayName: Configured Storm HostName
+    default: storm-simulator
+    values:
+    - storm-simulator
+
+variables:
+  pipelineArtifactName: storm-pipeline
+  solutionPath: Services/StormPipeline
+  imageRepository: dg/storm-pipeline
+  dockerFilePath: /StormPipeline
+  dockerComposeFilePath: /StormPipeline
+  
+trigger:
+  branches:
+    include:
+      - master
+      - releases/*
+  paths:
+    include:
+      - Services/StormPipeline/*
+
+resources:
+- repo: self
+
+stages:
+- stage: build_and_test
+  displayName: Build & Test Solution
+  jobs:
+  - template: ../../pipeline-templates/solution.build.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)_pre-transform
+      pipelineArtifactSourcePath: $(solutionPath)
+      solutionPath: $(solutionPath)
+      solutionFile: StormPipeline.sln
+
+- stage: replace_target_storm
+  displayName: Replace Target Storm
+  pool: Linux Build
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: build_and_test
+  jobs:
+    - job: update_config
+      displayName: Update Configuration File
+      variables:
+        Storm.HostName: ${{parameters.stormTarget}}
+      steps:
+        - task: DownloadPipelineArtifact@2
+          displayName: Download Pipeline Artifact
+          inputs:
+            allowFailedBuilds: false
+            artifactName: $(pipelineArtifactName)_pre-transform
+            targetPath: $(Build.SourcesDirectory)/$(pipelineArtifactName)
+        
+        - task: FileTransform@1
+          displayName: Update Configuration File
+          inputs:
+            folderPath: $(Build.SourcesDirectory)/$(pipelineArtifactName)
+            targetFiles: '**/appsettings.Test.json'
+            enableXmlTransform: false
+            fileType: json
+            xmlTransformationRules: '' # disabled
+            
+        - task: PublishPipelineArtifact@1
+          displayName: Publish Artifacts
+          inputs:
+            artifact: $(pipelineArtifactName)
+            targetPath:  $(Build.SourcesDirectory)/$(pipelineArtifactName)
+
+- stage: push_docker_image
+  displayName: Build & Push Docker Image
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: replace_target_storm
+  pool:
+    name: Linux Build
+  jobs:
+  - template: ../../pipeline-templates/docker.build-push.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      repository: $(imageRepository)
+      dockerFilePath: $(dockerFilePath)
+
+- stage: deploy_dg_master
+  displayName: Deploy DG Master
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  dependsOn: push_docker_image
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Master
+      dockerComposeFilePath: $(dockerComposeFilePath)
+      
+- stage: deploy_dg_test
+  displayName: Deploy DG Test
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: push_docker_image
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Test
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_dev
+  displayName: Deploy DG Development
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded())
+  dependsOn: push_docker_image
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Development
+      dockerComposeFilePath: $(dockerComposeFilePath)
+
+- stage: deploy_dg_maps
+  displayName: Deploy DG Maps
+  condition: and(or(eq(variables['Build.Reason'], 'IndividualCI'), eq(variables['Build.Reason'], 'BatchedCI'), eq(variables['Build.Reason'], 'Manual')), succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/releases/'))
+  dependsOn: deploy_dg_test
+  jobs:
+  - template: ../../pipeline-templates/deploy.template.yaml
+    parameters:
+      pipelineArtifactName: $(pipelineArtifactName)
+      environmentName: Data Gateway Maps
+      dockerComposeFilePath: $(dockerComposeFilePath)

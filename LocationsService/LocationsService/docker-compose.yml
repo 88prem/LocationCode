@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  locations-service:
+    image: registry.dev.apdcomms.co.uk:443/dg/locations-service:${Tag}
+    ports: 
+      - 34021:34021
+    networks:
+      - dg
+    container_name: locations-service
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Test
+  locations-mongo:
+    image: mongo:latest
+    container_name: locations-mongo
+    networks:
+      - dg
+    volumes:
+      - locations_mongo:/data/db
+
+networks:
+  dg:
+    name: dg
+
+volumes:
+  locations_mongo:
